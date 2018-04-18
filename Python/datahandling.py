@@ -30,3 +30,5 @@ df_pd.loc[df_pd["HR"]<40,"HR"]=None
 df_pd.loc[df_pd["HR"]>100,"HR"]=None
 df_pd_clean.plot.bar("PATNO","HR")
 df_pd_clean[["HR","SBP","DBP"]].plot.box()
+from scipy import stats
+stats.ttest_ind(df_pd_clean.loc[df_pd_clean['GENDER_CLEAN'] == 'Male', 'HR'],df_pd_clean.loc[df_pd_clean['GENDER_CLEAN'] == 'Female', 'HR'],nan_policy='omit')
